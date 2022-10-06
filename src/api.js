@@ -22,7 +22,12 @@ router.post("/testpost", (req, res) => {
 	});
 });
 
-app.use(`/.netlify/functions/api`, router);
+app.use(`/.netlify/functions/api`, router, (req, res) => {
+	res.statusCode(200);
+	res.json({
+		hello: "hi!"
+	});
+});
 
 module.exports = app;
 module.exports.handler = serverless(app);
