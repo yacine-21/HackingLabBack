@@ -1,21 +1,17 @@
-name: GitHub Actions Demo
-on:
- push:
-  branches: [dev]
- pull_request:
-  branches: [dev]
-jobs:
- normal_ci:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v3
-   - name: Run normal CI
-   - run: npm i
-   - run: npm install
+name: Node Continuous Integration
 
- pull_request_ci:
+on:
+ pull_request:
+  branches: [master]
+
+jobs:
+ test_pull_request:
   runs-on: ubuntu-latest
-  if: ${{ github.event_name == 'pull_request' }}
   steps:
-   - uses: actions/checkout@v3
-   - name: echo "hello world"
+   - uses: actions/checkout@v2
+   - uses: actions/setup-node@v1
+     with:
+      node-version: 17
+   - run: npm ci
+   - run: npm run test
+   - run: npm run build
