@@ -37,7 +37,7 @@ router.post("/api/2", (req, res) => {
 
 router.post("/api/2/dbUser", (req, res) => {
 	res.json({
-		hello: "hit the POST! fezohfezuhfuezhfu "
+		hello: "my new branch "
 	});
 });
 
