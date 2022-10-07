@@ -23,7 +23,7 @@ router.get("/test", (req, res) => {
 	res.json(["Hello", "Test"]);
 });
 
-// should not appear in the master branch of the repo if test fails
+// should not appear in the master branch of the repo if test fails I hope
 
 router.post("/api", (req, res) => {
 	res.json({
