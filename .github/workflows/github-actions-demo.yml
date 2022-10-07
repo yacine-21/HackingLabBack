@@ -28,8 +28,14 @@ on:
   branches: [dev]
 jobs:
  job1:
+  strategy:
+   matrix:
+    version: [17.0]
   runs-on: ubuntu-latest
   steps:
+   - uses: actions/setup-node@v3
+   - with:
+      - node-version: ${{ matrix.version }}
    - run: ls ${{ github.workspace }}
    - run: npm install
    - run: npm run test
