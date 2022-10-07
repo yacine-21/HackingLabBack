@@ -30,6 +30,5 @@ jobs:
      with:
       NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY}}
       NETLIFY_SITE_ID: ${{ secrets.SECRET_ID_NETLIFY}}
-      deploy-dir: "./public"
       production: true
       node: 16
