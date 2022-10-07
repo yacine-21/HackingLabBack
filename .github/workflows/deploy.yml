@@ -1,0 +1,23 @@
+name: Firebase Continuous Deployment
+
+on:
+ push:
+  branches: [master]
+
+jobs:
+ test_pull_request:
+  runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@master
+   - uses: actions/setup-node@master
+     with:
+      node-version: 17
+   - run: npm ci
+   - run: npm run build
+   - uses: thundermiracle/netlify-deploy@v3
+     with:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY}}
+      NETLIFY_SITE_ID: ${{ secrets.SECRET_ID_NETLIFY}}
+      deploy-dir: "./public"
+      production: true
+      node: 17
