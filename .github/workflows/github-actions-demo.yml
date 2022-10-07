@@ -1,32 +1,38 @@
 name: Node Continuous Integration
 
 on:
- pull_request:
-  branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
- test_pull_request:
-  runs-on: ubuntu-latest
-  strategy:
-   matrix:
-    node-version: [16.x]
-  steps:
-   - uses: actions/checkout@v2
-   - uses: actions/setup-node@v1
-     with:
-      node-version: ${{ matrix.node-version }}
-   - run: npm ci
-   - run: npm run test
-   - run: npm run build
+  test_pull_request:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
 
- test_deploy:
-  needs: test_pull_request
-  runs-on: ubuntu-latest
-  strategy:
-   matrix:
-    node-version: [16.x]
-  steps:
-   - uses: jsmrcaga/action-netlify-deploy@v1.1.0
-     with:
-      NETLIFY_AUTH_TOKEN: ${{ secrets.MY_TOKEN_SECRET }}
-      NETLIFY_DEPLOY_TO_PROD: true
+  test_deploy:
+    needs: test_pull_request
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run build
+      - uses: jsmrcaga/action-netlify-deploy@v1.1.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY }}
+          NETLIFY_DEPLOY_TO_PROD: true
