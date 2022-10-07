@@ -35,7 +35,7 @@ router.post("/api/2", (req, res) => {
 	});
 });
 
-router.post("/api/2/dbUser", (req, res) => {
+router.post("/api/2/ddbUser", (req, res) => {
 	res.json({
 		hello: "my new branch test"
 	});
