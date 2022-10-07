@@ -29,6 +29,12 @@ router.post("/api", (req, res) => {
 	});
 });
 
+router.get("/newRoute", (req, res) => {
+	res.json({
+		hello: "WELCOME BOSS "
+	});
+});
+
 router.post("/api/2", (req, res) => {
 	res.json({
 		hello: "hit the POST! fezohfezuhfuezhfu "

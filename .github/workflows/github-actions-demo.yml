@@ -1,35 +1,44 @@
 name: Node Continuous Integration
 
 on:
- pull_request:
-  branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
- test_pull_request:
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@v2
-   - uses: actions/setup-node@v1
-     with:
-      node-version: 16
-   - run: npm ci
-   - run: npm run test
-   - run: npm run build
+  test_pull_request:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm run test
+      - run: npm run build
 
- test_deploy:
-  needs: test_pull_request
-  runs-on: ubuntu-latest
-  steps:
-   - uses: actions/checkout@master
-   - uses: actions/setup-node@master
-     with:
-      node-version: 16
-   - run: npm ci
-   - run: npm run build
-   - uses: thundermiracle/netlify-deploy@v3
-     with:
-      NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY}}
-      NETLIFY_SITE_ID: ${{ secrets.SECRET_ID_NETLIFY}}
-      deploy-dir: "./public"
-      production: true
-      node: 16
+  test_deploy:
+    needs: test_pull_request
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v2
+      # ( Build to ./dist or other directory... )
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: "./dist"
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
