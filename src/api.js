@@ -29,6 +29,12 @@ router.post("/api", (req, res) => {
 	});
 });
 
+router.delete("/api", (req, res) => {
+	res.json({
+		hello: "hit the POST! fezohfezuhfuezhfu "
+	});
+});
+
 router.post("/api/2", (req, res) => {
 	res.json({
 		hello: "hit the POST! fezohfezuhfuezhfu "
