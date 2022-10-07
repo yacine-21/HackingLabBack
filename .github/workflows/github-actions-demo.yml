@@ -8,6 +8,7 @@ on:
 
 jobs:
  build:
+  name: test-ci-github
   runs-on: ubuntu-latest
 
   strategy:
