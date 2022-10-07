@@ -5,15 +5,14 @@ on:
  pull_request:
   branches: [dev]
 jobs:
- job1:
+ runs-on: ubuntu-latest
+ example_matrix:
   strategy:
    matrix:
-    version: [17.0]
-  runs-on: ubuntu-latest
+    version: [10, 12, 14]
   steps:
    - uses: actions/setup-node@v3
-   - with:
-      - node-version: ${{ matrix.version }}
-   - run: ls ${{ github.workspace }}
-   - run: npm install
-   - run: npm run test
+     with:
+      node-version: ${{ matrix.version }}
+
+ #  - run: ls ${{ github.workspace }}
