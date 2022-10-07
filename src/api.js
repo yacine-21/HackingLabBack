@@ -29,9 +29,9 @@ router.post("/api", (req, res) => {
 	});
 });
 
-router.delete("/api", (req, res) => {
+router.get("/newRoute", (req, res) => {
 	res.json({
-		hello: "hit the POST! fezohfezuhfuezhfu "
+		hello: "WELCOME BOSS "
 	});
 });
 
