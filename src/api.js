@@ -23,7 +23,7 @@ router.get("/test", (req, res) => {
 	res.json(["Hello", "Test"]);
 });
 
-// SHOULD I SEE THIS ?
+// SHOULD I SEE THIS
 router.post("/api", (req, res) => {
 	res.json({
 		hello: "hit the POST!"
