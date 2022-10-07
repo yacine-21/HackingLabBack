@@ -16,7 +16,7 @@ cors({
 app.use("/.netlify/functions/api", router); // path must route to lambda
 
 router.get("/", (req, res) => {
-	res.json("Hello World");
+	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
 });
 
 router.get("/test", (req, res) => {
@@ -35,7 +35,7 @@ router.post("/api/2", (req, res) => {
 	});
 });
 
-router.post("/api/2/dbUser", (req, res) => {
+router.post("/api/2/ddbUser", (req, res) => {
 	res.json({
 		hello: "my new branch test"
 	});
