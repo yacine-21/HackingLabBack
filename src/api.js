@@ -41,6 +41,12 @@ router.post("/api/2/dbUser", (req, res) => {
 	});
 });
 
+router.post("/api/3/dbUser", (req, res) => {
+	res.json({
+		hello: "my new branch test"
+	});
+});
+
 // app.use(`/`, router, (req, res, next) => {
 // 	// return statu code 200
 // 	console.log("hit the route");
