@@ -1,25 +1,3 @@
-# name: Node.js CI
-# on:
-#  push:
-#   branches: [dev]
-#  pull_request:
-#   branches: [dev]
-
-# jobs:
-#  job1:
-#   runs-on: ubuntu-latest
-#   steps:
-#    - run: ls ${{ github.workspace }}
-#    - run: cd
-#    - run: npm install
-#    - run: npm run test
-
-#  job2:
-#   runs-on: ubuntu-latest
-#   needs: job1
-#   steps:
-#    - run: echo "hey step one is done"
-
 name: GitHub Actions Demo
 on:
  push:
