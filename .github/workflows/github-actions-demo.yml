@@ -1,5 +1,4 @@
 name: Node.js CI
-
 on:
  push:
   branches: [dev]
@@ -11,7 +10,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - run: ls ${{ github.workspace }}
-   - run: npm i
+   - run: npm install
    - run: npm run test
 
  job2:
