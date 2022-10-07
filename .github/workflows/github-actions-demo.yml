@@ -7,7 +7,7 @@ on:
   branches: [master]
 
 jobs:
- name: test-ci-gith
+ name: test-ci-github
  runs-on: ubuntu-latest
 
  strategy:
