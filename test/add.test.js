@@ -6,10 +6,10 @@ const app = require("../src/api");
 describe("POST Create User Wallet", () => {
 	it("should create wallet for the user", async () => {
 		await request(app)
-			.get("/netlify/functions/api")
+			.get("/.netlify/functions/api")
 			.expect(200)
 			.then(res => {
-				expect(res.body.hello).to.length.greaterThan(0).instanceof(Array);
+				expect(res.body).to.length.greaterThan(0).instanceof(Array);
 			});
 	});
 });
