@@ -8,8 +8,7 @@ on:
 
 jobs:
     test:
-    name: test-ci-github
-        runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest 
         strategy:
             matrix:
                 node-version: [17.x]
