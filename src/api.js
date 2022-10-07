@@ -16,18 +16,22 @@ cors({
 app.use("/.netlify/functions/api", router); // path must route to lambda
 
 router.get("/", (req, res) => {
-	res.json("hello world");
+	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
 });
 
 router.get("/test", (req, res) => {
 	res.json(["Hello", "Test"]);
 });
 
-// should not appear in the master branch of the repo if test fails
-
 router.post("/api", (req, res) => {
 	res.json({
-		hello: "hit the POST!"
+		hello: "hit the POST! fezohfezuhfuezhfu "
+	});
+});
+
+router.post("/api/2", (req, res) => {
+	res.json({
+		hello: "hit the POST! fezohfezuhfuezhfu "
 	});
 });
 
