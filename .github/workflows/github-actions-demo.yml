@@ -36,3 +36,4 @@ jobs:
       with:
         NETLIFY_AUTH_TOKEN: ${{ secrets.TOKEN_NETLIFY }}
         NETLIFY_DEPLOY_TO_PROD: true
+   - run: echo "deployed"
