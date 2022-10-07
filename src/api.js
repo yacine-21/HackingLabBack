@@ -16,7 +16,7 @@ cors({
 app.use("/.netlify/functions/api", router); // path must route to lambda
 
 router.get("/", (req, res) => {
-	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
+	res.json("Hello World");
 });
 
 router.get("/test", (req, res) => {
