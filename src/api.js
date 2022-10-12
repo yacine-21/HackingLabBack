@@ -1,5 +1,4 @@
 const express = require("express");
-const serverless = require("serverless-http");
 
 const app = express();
 const router = express.Router();
@@ -13,52 +12,20 @@ cors({
 	origin: "*",
 	preflightContinue: true
 });
-app.use("/.netlify/functions/api", router); // path must route to lambda
+const routerGet = require("./ROUTES/GET/");
+const routerPost = require("./ROUTES/POST/");
+const routerDelete = require("./ROUTES/DELETE/");
+const routerUpdate = require("./ROUTES/UPDATE");
 
-router.get("/", (req, res) => {
-	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
+app.use("/", router); // path must route to lambdarequire_once('./libraries/controllers/Article.php');
+
+app.use("/get", routerGet);
+app.use("/post", routerPost);
+app.use("/delete", routerDelete);
+app.use("/update", routerUpdate);
+
+app.listen(3000, () => {
+	console.log("Server is running on port 3000");
 });
-
-router.get("/test", (req, res) => {
-	res.json(["Hello", "Test"]);
-});
-
-router.post("/api", (req, res) => {
-	res.json({
-		hello: "hit the POST! fezohfezuhfuezhfu "
-	});
-});
-
-router.get("/newRoute", (req, res) => {
-	res.json({
-		hello: "WELCOME BOSS "
-	});
-});
-
-router.post("/api/2", (req, res) => {
-	res.json({
-		hello: "hit the POST! fezohfezuhfuezhfu "
-	});
-});
-
-router.post("/api/2/ddbUser", (req, res) => {
-	res.json({
-		hello: "my new branch test"
-	});
-});
-
-router.post("/api/3/dbUser", (req, res) => {
-	res.json({
-		hello: "my new branch test"
-	});
-});
-
-// app.use(`/`, router, (req, res, next) => {
-// 	// return statu code 200
-// 	console.log("hit the route");
-// });
-
-module.exports = app;
-module.exports.handler = serverless(app);
 
 // doc : https://paulreaney.medium.com/deploy-express-js-on-netlify-91cfaea39591

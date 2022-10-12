@@ -1,0 +1,10 @@
+POST http://localhost:9000/api/getInfo
+
+{
+    "ipAddress" : "172.29.0.1",
+    "level":2
+}
+
+###
+
+GET http://localhost:3000/get
