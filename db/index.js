@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const connectDB = async () => {
 	await mongoose
-		.connect("mongodb://localhost:27017/test")
+		.connect(process.env.MONGO_URI)
 		.then(() => {
 			console.log("Connected to MongoDB");
 		})
@@ -14,4 +14,4 @@ const connectDB = async () => {
 	// use `await mongoose.connect('mongodb://user:password@localhost:27017/test');` if your database has auth enabled
 };
 
-module.exports = {connectDB};
+module.exports = { connectDB };
