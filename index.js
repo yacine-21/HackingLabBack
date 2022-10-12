@@ -17,7 +17,7 @@ const routerPost = require("./src/ROUTES/POST");
 const routerDelete = require("./src/ROUTES/DELETE");
 const routerUpdate = require("./src/ROUTES/UPDATE");
 
-app.use("/", router); // path must route to lambdarequire_once('./libraries/controllers/Article.php');
+app.use("/", router);
 
 app.use("/get", routerGet);
 app.use("/post", routerPost);
@@ -25,7 +25,7 @@ app.use("/delete", routerDelete);
 app.use("/update", routerUpdate);
 
 app.listen(process.env.PORT, () => {
-	console.log("Server is running on port" + process.env.PORT);
+	console.log("Server is running on port " + process.env.PORT);
 });
 
 // doc : https://paulreaney.medium.com/deploy-express-js-on-netlify-91cfaea39591
