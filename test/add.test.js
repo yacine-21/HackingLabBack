@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const chai = require("chai");
 const request = require("supertest");
-const app = require("../src/api");
+const app = require("..");
 
 describe("POST Create User Wallet", () => {
 	it("should create wallet for the user", async () => {

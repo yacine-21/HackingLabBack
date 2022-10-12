@@ -6,7 +6,6 @@ const exec = require("child_process").exec;
 const { connectDB } = require("../../../db");
 const { ipSchema } = require("../../../db/schema");
 const mongoose = require("mongoose");
-connectDB();
 
 router.post("/getInfo", async (req, res) => {
 	const ip = mongoose.model("ip", ipSchema);

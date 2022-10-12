@@ -13,10 +13,10 @@ cors({
 	origin: "*",
 	preflightContinue: true
 });
-const routerGet = require("./ROUTES/GET/");
-const routerPost = require("./ROUTES/POST/");
-const routerDelete = require("./ROUTES/DELETE/");
-const routerUpdate = require("./ROUTES/UPDATE");
+const routerGet = require("./src/ROUTES/GET");
+const routerPost = require("./src/ROUTES/POST");
+const routerDelete = require("./src/ROUTES/DELETE");
+const routerUpdate = require("./src/ROUTES/UPDATE");
 
 app.use("/", router); // path must route to lambdarequire_once('./libraries/controllers/Article.php');
 

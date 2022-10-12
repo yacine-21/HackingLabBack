@@ -17,8 +17,8 @@
 		"typescript": "^4.8.4"
 	},
 	"scripts": {
-		"build": "node src/api.js",
-		"start": "nodemon src/api.js",
+		"build": "node index.js",
+		"start": "nodemon index.js",
 		"test": "mocha"
 	},
 	"keywords": [],
