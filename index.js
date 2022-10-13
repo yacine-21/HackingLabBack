@@ -24,4 +24,5 @@ app.listen(process.env.PORT, () => {
 	console.log("Server is running on port " + process.env.PORT);
 });
 
+module.exports = app;
 // doc : https://paulreaney.medium.com/deploy-express-js-on-netlify-91cfaea39591
