@@ -8,6 +8,7 @@ const { ipSchema } = require("../../../db/schema");
 const mongoose = require("mongoose");
 
 router.post("/getInfo", async (req, res) => {
+	connectDB();
 	const ip = mongoose.model("ip", ipSchema);
 	const newIP = await ip.create({
 		ip: req.body.ipAddress

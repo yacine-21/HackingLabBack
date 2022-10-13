@@ -17,7 +17,6 @@
 		"typescript": "^4.8.4"
 	},
 	"scripts": {
-		"build": "node index.js",
 		"start": "nodemon index.js",
 		"test": "mocha"
 	},

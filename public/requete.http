@@ -7,4 +7,4 @@ POST http://localhost:9000/api/getInfo
 
 ###
 
-GET http://localhost:3000/get
+POST http://localhost:3001/post/getInfo

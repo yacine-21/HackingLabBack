@@ -1,5 +1,4 @@
 const express = require("express");
-
 const app = express();
 const router = express.Router();
 const cors = require("cors");
@@ -7,15 +6,12 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-cors({
-	credentials: true,
-	origin: "*",
-	preflightContinue: true
-});
-const routerGet = require("./src/ROUTES/GET");
-const routerPost = require("./src/ROUTES/POST");
-const routerDelete = require("./src/ROUTES/DELETE");
-const routerUpdate = require("./src/ROUTES/UPDATE");
+
+// routes
+const routerGet = require("./src/routes/get");
+const routerPost = require("./src/routes/post");
+const routerDelete = require("./src/routes/delete");
+const routerUpdate = require("./src/routes/update");
 
 app.use("/", router);
 
