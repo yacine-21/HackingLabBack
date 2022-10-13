@@ -26,6 +26,4 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - name: Deploy to VERCEL
       - run: npx vercel deploy --prod
-      
