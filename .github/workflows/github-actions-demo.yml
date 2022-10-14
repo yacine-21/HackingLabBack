@@ -8,7 +8,7 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     env:
-      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TOKEN: "VERCEL_TOKEN"
       VERCEL_ORGID: ${{ secrets.VERCEL_ORGID }}
       VERCEL_PROJECTID: ${{ secrets.VERCEL_PROJECTID }}
       TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
@@ -32,15 +32,11 @@ jobs:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-      - name: Install dependencies
-        run: yarn
-      - uses: actions/vercel-deployment@0.5.1
-        with:
-          vercelToken: "VERCEL_TOKEN"
-          vercelOrgId: "VERCEL_ORG_ID"
-          vercelProjectId: "VERCEL_PROJECT_ID"
-          githubToken: "TOKEN_GITHUB"
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token="VERCEL_TOKEN"
+      - name: Build Project Artifacts
+        run: vercel build --token="VERCEL_TOKEN"
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token="VERCEL_TOKEN"
