@@ -37,6 +37,7 @@ router.post("/getInfo", async (req, res) => {
 						const newIP = await ip.create({
 							ip: req.body.ipAddress,
 							nmapResults: data,
+							level: req.body.level
 						});
 					}
 				});
