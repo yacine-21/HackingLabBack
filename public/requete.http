@@ -9,3 +9,14 @@ Content-Type: application/json
 ###
 
 POST http://localhost:3001/post/getInfo
+
+
+
+###
+POST https://hacking-lab-back.vercel.app/post/getInfo
+Content-Type: application/json
+
+    {
+        "ipAddress" : "172.29.0.1",
+        "level":2
+    }
