@@ -8,7 +8,10 @@ jobs:
   test_pull_request:
     runs-on: ubuntu-latest
     env:
-      SUPER_SECRET: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORGID: ${{ secrets.VERCEL_ORGID }}
+      VERCEL_PROJECTID: ${{ secrets.VERCEL_PROJECTID }}
+      TOKEN_GITHUB: ${{ secrets.TOKEN_GITHUB }}
     strategy:
       matrix:
         node-version: [16.x]
@@ -28,5 +31,16 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: npx vercel deploy --token="SUPER_SECRET"
-      #use a secret from github actiio
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: Install dependencies
+        run: yarn
+      - uses: actions/vercel-deployment@0.5.1
+        with:
+          vercelToken: "VERCEL_TOKEN"
+          vercelOrgId: "VERCEL_ORG_ID"
+          vercelProjectId: "VERCEL_PROJECT_ID"
+          githubToken: "TOKEN_GITHUB"
