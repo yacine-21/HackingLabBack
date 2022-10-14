@@ -16,7 +16,7 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: echo "bonjour je suis le test"
+      - run: echo "bonjour je suis le test "
         # - uses: actions/checkout@v2
         # - uses: actions/setup-node@v1
         #   with:
