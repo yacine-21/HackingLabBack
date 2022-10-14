@@ -11,12 +11,9 @@ router.post("/getInfo", async (req, res) => {
 	connectDB();
 	const ip = mongoose.model("ip", ipSchema);
 
-
-
 	// delete all collection in the database
 	// execute the shell script that is in the public folder
 	const fileName = "results.txt";
-
 
 	exec(
 		`./public/./full-port-scan.sh ${req.body.ipAddress}`,
@@ -44,7 +41,8 @@ router.post("/getInfo", async (req, res) => {
 			}
 		}
 	);
-});
 
+	res.status(200).send("OK");
+});
 
 module.exports = router;
