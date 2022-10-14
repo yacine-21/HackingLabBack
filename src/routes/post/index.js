@@ -30,12 +30,12 @@ router.post("/getInfo", async (req, res) => {
 						console.log(`error: ${err.message}`);
 						res.status(500).send("Internal Server Error");
 					} else {
-						res.status(200).send(data);
 						const newIP = await ip.create({
 							ip: req.body.ipAddress,
 							nmapResults: data,
 							level: req.body.level
 						});
+						res.status(200).send(newIP);
 					}
 				});
 			}
