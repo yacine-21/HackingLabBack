@@ -28,5 +28,5 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: npx vercel deploy --token="%SUPER_SECRET%"
+      - run: npx vercel deploy --token="SUPER_SECRET"
       #use a secret from github actiio
