@@ -7,6 +7,8 @@ on:
 jobs:
   test_pull_request:
     runs-on: ubuntu-latest
+    env:
+      SUPER_SECRET: ${{ secrets.VERCEL_TOKEN }}
     strategy:
       matrix:
         node-version: [16.x]
@@ -26,5 +28,5 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: npx vercel deploy --token=${{secret.VERCEL_TOKEN}}
+      - run: npx vercel deploy --token="%SUPER_SECRET%"
       #use a secret from github actiio
