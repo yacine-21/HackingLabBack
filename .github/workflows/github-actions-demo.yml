@@ -20,7 +20,9 @@ jobs:
           with:
             node-version: ${{ matrix.node-version }}
         - run: npm ci
+        - run: echo "Installation Done"
         - run: npm run test
+        - run: echo "Verification Done"
 
   deploy:
     needs: test_verification
