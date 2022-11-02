@@ -1,11 +1,10 @@
 name: Node Continuous Integration
-
 on:
   pull_request:
     branches: [master]
 
 jobs:
-  test_pull_request:
+  test_verification:
     runs-on: ubuntu-latest
     env:
       VERCEL_TOKEN: "VERCEL_TOKEN"
@@ -16,7 +15,6 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: echo "bonjour je suis le test "
         - uses: actions/checkout@v2
         - uses: actions/setup-node@v1
           with:
@@ -24,8 +22,8 @@ jobs:
         - run: npm ci
         - run: npm run test
 
-  test_deploy:
-    needs: test_pull_request
+  deploy:
+    needs: test_verification
     runs-on: ubuntu-latest
     strategy:
       matrix:
