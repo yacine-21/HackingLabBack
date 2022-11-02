@@ -9,7 +9,7 @@ describe("POST Create User Wallet", () => {
 			.get("/get")
 			.expect(200)
 			.then(res => {
-				expect(res.body).to.length.greaterThan(10).instanceof(Array);
+				expect(res.body).to.length.greaterThan(4).instanceof(Array);
 			});
 	});
 });
