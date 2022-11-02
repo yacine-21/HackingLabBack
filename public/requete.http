@@ -13,7 +13,7 @@ POST http://localhost:3001/post/getInfo
 
 
 ###
-POST https://hacking-lab-back.vercel.app/post/getInfo
+POST http://localhost:3001/post/getInfo
 Content-Type: application/json
 
     {

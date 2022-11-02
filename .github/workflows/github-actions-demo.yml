@@ -1,11 +1,10 @@
 name: Node Continuous Integration
-
 on:
   pull_request:
     branches: [master]
 
 jobs:
-  test_pull_request:
+  test_verification:
     runs-on: ubuntu-latest
     env:
       VERCEL_TOKEN: "VERCEL_TOKEN"
@@ -16,21 +15,30 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - run: echo "bonjour je suis le test "
         - uses: actions/checkout@v2
         - uses: actions/setup-node@v1
           with:
             node-version: ${{ matrix.node-version }}
         - run: npm ci
+        - run: echo "Installation Done"
         - run: npm run test
+        - run: echo "Verification Done"
 
-  test_deploy:
-    needs: test_pull_request
+  deploy:
+    needs: test_verification
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
     steps:
       - uses: actions/checkout@v2
-      - run: npm install --global vercel@latest
-      - run: vercel deploy --token="VERCEL_TOKEN"
+      #  your build commands
+      # - run: |
+      #    ng build --prod
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.VERCEL_ORGID}}  #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECTID}} #Required 
+          # working-directory: ./sub-directory
+      - run: echo "DEPLOYMENT DONE"
