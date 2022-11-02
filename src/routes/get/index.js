@@ -8,7 +8,7 @@ router.use((req, res, next) => {
 });
 
 router.get("/", (req, res) => {
-	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food","Car","Carrot"]);
+	res.json(["Tony", "Lisa", "Michael", "Ginger", "Food","Car","Carrot","tomato","power","knoweledge","scientist","melody"]);
 });
 
 module.exports = router;
